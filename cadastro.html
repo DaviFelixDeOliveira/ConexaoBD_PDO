@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <form action="insert.php" method="post" >
-        <label for="nm_usuario">Nome:</label>
-        <input type="text" name="nm_usuario" id="nm_usuario"required > <br>
-    
-        <label for="nm_email">Email:</label>
-        <input type="email" name="nm_email" id="nm_email" value="@gmail.com" required> <br>
-    
-        <label for="nm_senha">Senha:</label>
-        <input type="password" name="nm_senha" id="nm_senha" required> <br>
-        <label for="nm_login">Login</label>
-        <input type="text" name="login" id="" required> <br>    
-    
-        <label for="img_foto">Foto (Opcional)</label>
-        <input type="file" name="img_foto" id="img_foto"> <br>
-    
-        <label for="nr_fone">Número</label>
-        <input type="number" name="nr_fone" id="nr_fone" required> <br>
-    
-        <input type="submit" value="Enviar">
+  </head>
+  <body>
+    <form action="insert.php" method="post">
+      <label for="nm_usuario" id="form">Nome:</label>
+      <input type="text" name="nm_usuario" id="nm_usuario" /> <br />
+
+      <label for="nm_email">Email:</label>
+      <input type="text" name="nm_email" id="nm_email" value="@gmail.com" />
+      <br />
+
+      <label for="nm_senha">Senha:</label>
+      <input type="password" name="nm_senha" id="senha" /> <br />
+
+      <label for="">Confirmação de senha:</label>
+      <input type="password" name="" id="confirmaSenha" /> <br />
+
+      <label for="nm_login">Login</label>
+      <input type="text" name="login" id="" > <br />
+
+      <label for="img_foto">Foto (Opcional)</label>
+      <input type="file" name="img_foto" id="img_foto" /> <br />
+
+      <label for="nr_fone">Número</label>
+      <input type="number" name="nr_fone" id="nr_fone" /> <br />
+
+      <input type="submit" value="Enviar" onclick="checkSenha();" />
     </form>
-    
-    
-</body>
+
+    <script src="script.js"></script>
+  </body>
 </html>
