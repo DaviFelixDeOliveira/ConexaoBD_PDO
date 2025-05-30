@@ -4,18 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <form action="insert.php" method="post">
-      <label for="nm_usuario" id="form">Nome:</label>
+    <form action="insert.php" method="post" id="form">
+      <label for="nm_usuario" >Nome:</label>
       <input type="text" name="nm_usuario" id="nm_usuario" /> <br />
 
       <label for="nm_email">Email:</label>
       <input type="text" name="nm_email" id="nm_email" value="@gmail.com" />
       <br />
 
-      <label for="nm_senha">Senha:</label>
+      <label for="nm_senha" class="senha">Senha:</label>
       <input type="password" name="nm_senha" id="senha" /> <br />
+       <div class="progress">
+        <div class="bar"></div>
+    </div>
 
       <label for="">Confirmação de senha:</label>
       <input type="password" name="" id="confirmaSenha" /> <br />
@@ -29,8 +33,10 @@
       <label for="nr_fone">Número</label>
       <input type="number" name="nr_fone" id="nr_fone" /> <br />
 
-      <input type="submit" value="Enviar" onclick="checkSenha();" />
+      <input type="submit" value="Enviar" id="btnSubmit"/>
     </form>
+
+    
 
     <script src="script.js"></script>
   </body>

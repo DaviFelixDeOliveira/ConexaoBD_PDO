@@ -172,9 +172,9 @@ function checkEmail(email) {
       let porcentagem = Math.floor((forca / 4) * 100);
   barraProgresso.style.width = `${porcentagem}%`; // Atualiza a largura da barra
    
-      // Se a força for 100%, pode executar alguma ação extra
+      
       if (porcentagem === 100) {
-          // Aqui você pode executar alguma ação, ex: console.log('Senha forte!');
+    //   in progress    
       }
   });
    
