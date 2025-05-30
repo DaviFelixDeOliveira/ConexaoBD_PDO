@@ -137,22 +137,51 @@ function checkEmail(email) {
 
   //////////
 
-
-
-  function temNumero(senha) {
-    return /\d/.test(senha);
-  }
-  
-
-  form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Evita o envio do formulário
-
-    const senha = form.senha.value;
-
-    if (temNumero(senha)) {
-      alert("Senha válida!");
-    } else {
-      
-      alert("Senha inválida!");
-    }
+  let campoSenha = document.querySelector('.password'); // Seleciona o campo de senha
+  let barraProgresso = document.querySelector('.progress .bar'); // Seleciona a barra de progresso
+   
+  // Adiciona o evento de tecla solta para atualizar a força da senha
+  campoSenha.addEventListener('keyup', () => {
+      let forca = 0; // Inicializa a força da senha
+   
+      // Verifica se tem pelo menos uma letra maiúscula e uma minúscula
+      forca += verificarRegra(
+          '.low-upper-case',
+          campoSenha.value.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)
+      );
+   
+      // Verifica se tem pelo menos um número
+      forca += verificarRegra(
+          '.one-number',
+          campoSenha.value.match(/([0-9])/)
+      );
+   
+      // Verifica se tem pelo menos um caractere especial (!@#$%&*_)
+      forca += verificarRegra(
+          '.one-special-char',
+          campoSenha.value.match(/([!@#$%&*_])/)
+      );
+   
+      // Verifica se a senha tem pelo menos 6 caracteres
+      forca += verificarRegra(
+          '.min-char',
+          campoSenha.value.length >= 6
+      );
+   
+      // Calcula a porcentagem de força (0 a 100%)
+      let porcentagem = Math.floor((forca / 4) * 100);
+  barraProgresso.style.width = `${porcentagem}%`; // Atualiza a largura da barra
+   
+      // Se a força for 100%, pode executar alguma ação extra
+      if (porcentagem === 100) {
+          // Aqui você pode executar alguma ação, ex: console.log('Senha forte!');
+      }
   });
+   
+  // Função para atualizar o status visual de cada regra
+  function verificarRegra(classeRegra, valido) {
+      let areaRegra = document.querySelector(classeRegra);
+      areaRegra.querySelector('.valid-point')
+          .style.backgroundColor = valido ? 'green' : 'red';
+      return valido ? 1 : 0;
+  }

@@ -1,9 +1,0 @@
-validação de senha 
-8caracteres
-1 maiuscula
-1 minuscula
-1 numero
-confirmação de senha
-
-email @
-
