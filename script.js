@@ -1,5 +1,5 @@
 const form = document.querySelector(".form");
-const submit = document.querySelector(".enviar");
+const submit = document.getElementById("btnSubmit");
 const senha = document.getElementById("senha");
 const senhaConfirmacao = document.getElementById("senhaConfirma");
 
@@ -44,6 +44,7 @@ function quandoInputModificado() {
     const valido = senhaValida;
     if (valido) {
         submit.disabled = false;
+
     } else {
         submit.disabled = true;
     }
@@ -52,5 +53,8 @@ function quandoInputModificado() {
 for (const input of form.querySelectorAll("input")) {
     input.addEventListener("keyup", () => quandoInputModificado());
 }
+
+
+
 
 quandoInputModificado();

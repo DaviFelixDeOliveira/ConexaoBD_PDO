@@ -9,6 +9,7 @@
     background-color: #1a1a1a;
     color: #fff;
     border: 1px solid #333;
+   
   }
   
   .title {
@@ -38,7 +39,10 @@
   
   .enviar {
     text-align: center;
+    background-color: red;
+
   }
+
   
   .enviar a:hover {
     text-decoration: underline royalblue;

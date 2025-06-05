@@ -14,47 +14,54 @@
 </head>
 
 <body>
-    <form class="form">
+
+    <form class="form" method="post" action="insert.php" >
         <div class="header">
             <p class="title">Registrar </p>
         </div>
 
         <label>
-            <input name="nome" class="input" type="text" placeholder="" required="">
+            <input name="nm_usuario"  class="input" type="text" placeholder="" required="">
             <span>Nome</span>
         </label>
         <label>
-            <input class="input" name="sobrenome" type="text" placeholder="" required="">
+            <input class="input"  name="nm_sobrenome" type="text" placeholder="" required="">
             <span>Sobrenome</span>
         </label>
 
 
         <label>
-            <input class="input" type="email" name="email" placeholder="" required="">
+            <input class="input" type="email" name="nm_email" placeholder="" required="" value="@gmail.com">
                 <span>Email</span>
         </label>
 
         <label>
-            <input class="input" name="senha" id="senha" type="password" placeholder="" required="">
+            <input class="input" name="nm_senha" id="senha" type="password" placeholder="" required="">
             <span>Senha</span>
         </label>
         <label>
-            <input class="input" type="password" id="senhaConfirma" placeholder="" required="">
+            <input class="input"  type="password" id="senhaConfirma" placeholder="" required="">
             <span>Confirme sua senha</span>
         </label>
         <label>
-            <input class="input" type="text" placeholder="" required="">
+            <input class="input"  name="login" type="text" placeholder="" required="">
             <span>Login</span>
         </label>
         <label>
-            <input class="input" type="password" placeholder="" required="">
+            <input class="input" name="nr_fone" type="number" placeholder="" required="">
             <span>Número</span>
         </label>
 
-        <input type="submit" class="enviar" value="Entrar">
+        <input type="submit" class="enviar"  id="btnSubmit" value="Entrar">
+<!--         
+    <i class="fa-solid fa-eye-slash"></i>
+    <i class="fa-solid fa-eye"></i> -->
     </form>
 
     <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/fe31542f8a.js" crossorigin="anonymous"></script>
+
+
 </body>
 
 </html>
