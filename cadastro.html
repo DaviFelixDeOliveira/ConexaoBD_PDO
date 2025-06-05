@@ -8,48 +8,60 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <form class="form" method="post" action="insert.php" >
         <div class="header">
-            <p class="title">Registrar </p>
+            <p class="title">Formulário de Cadastro </p>
         </div>
 
-        <label>
+        <label class="input-control">
             <input name="nm_usuario"  class="input" type="text" placeholder="" required="">
             <span>Nome</span>
+            <!-- <i class="fa-solid fa-user"></i> -->
         </label>
-        <label>
+        <label class="input-control">
             <input class="input"  name="nm_sobrenome" type="text" placeholder="" required="">
             <span>Sobrenome</span>
+            <!-- <i class="fa-solid fa-user"></i> -->
         </label>
 
 
-        <label>
-            <input class="input" type="email" name="nm_email" placeholder="" required="" value="@gmail.com">
+        <label class="input-control">
+            <input class="input" type="email" name="nm_email" placeholder="" required="" value="">
                 <span>Email</span>
+                <!-- <i class="fa-solid fa-envelope"></i> -->
         </label>
 
-        <label>
+        <label class="input-control">
             <input class="input" name="nm_senha" id="senha" type="password" placeholder="" required="">
             <span>Senha</span>
+            <!-- <i class="fa-solid fa-key"></i> -->
+
         </label>
-        <label>
+        <label class="input-control">
             <input class="input"  type="password" id="senhaConfirma" placeholder="" required="">
             <span>Confirme sua senha</span>
-        </label>
+            <!-- <i class="fa-solid fa-key"></i> -->
+
+        </label class="input-control">
         <label>
             <input class="input"  name="login" type="text" placeholder="" required="">
             <span>Login</span>
+            <!-- <i class="fa-solid fa-right-to-bracket"></i> -->
         </label>
         <label>
             <input class="input" name="nr_fone" type="number" placeholder="" required="">
             <span>Número</span>
+            <!-- <i class="fa-solid fa-phone"></i> -->
+        </label>
+        <label>
+            <input class="input" name="img_foto" type="file" placeholder="" required="">
+            <span>Foto (Opcioinal)</span>
+            <!-- <i class="fa-solid fa-phone"></i> -->
         </label>
 
         <input type="submit" class="enviar"  id="btnSubmit" value="Entrar">

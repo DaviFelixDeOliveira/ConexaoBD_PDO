@@ -1,19 +1,28 @@
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 350px;
-    padding: 30px;
-    border-radius: 20px;
-    position: relative;
-    background-color: #1a1a1a;
-    color: #fff;
-    border: 1px solid #333;
-   
-  }
+body{
+  font-family: "Poppins", sans-serif;
   
-  .title {
-    font-size: 28px;
+}
+
+.fa-solid{
+  
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  padding: 30px;
+  border-radius: 20px;
+  position: relative;
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 1px solid #333;
+  
+  
+}
+
+.title {
+  font-size: 28px;
     font-weight: 600;
     letter-spacing: -1px;
     position: relative;
@@ -23,7 +32,7 @@
     color: #00bfff;
   }
   
-
+  
   
   .title::before {
     position: absolute;

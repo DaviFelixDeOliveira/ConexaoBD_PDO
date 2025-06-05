@@ -4,7 +4,7 @@ const senha = document.getElementById("senha");
 const senhaConfirmacao = document.getElementById("senhaConfirma");
 
 function checkSenha() {
-    /**@type {string} */
+   
     const valorSenha = senha.value;
     const valorSenhaConfirmacao = senhaConfirmacao.value;
 
@@ -53,7 +53,7 @@ function quandoInputModificado() {
 for (const input of form.querySelectorAll("input")) {
     input.addEventListener("keyup", () => quandoInputModificado());
 }
-
+    
 
 
 
