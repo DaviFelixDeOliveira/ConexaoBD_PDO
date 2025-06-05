@@ -8,7 +8,7 @@ $login = $_POST['login'];
 $foto = "null";
 $numero = $_POST['nr_fone'];
 
-$sql = "insert into tb_usuario values (null, '$nome', '$sobrenome', '$email', '$senha', '$login', '$foto', '$numero')";
+$sql = "insert into tb_usuario values (null, '$nome', '$sobrenome', '$email','$login', '$senha',  '$foto', '$numero')";
 if ($conn->query($sql)) {
 // echo "Registro inserido com sucesso!";
 
