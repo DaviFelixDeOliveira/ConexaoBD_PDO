@@ -3,9 +3,7 @@ body{
   
 }
 
-.fa-solid{
-  
-}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -20,6 +18,13 @@ body{
   
   
 }
+
+
+#error , #errorConfirm, #errorEmail {
+  color: rgb(255, 49, 49);
+}
+
+
 
 .title {
   font-size: 28px;

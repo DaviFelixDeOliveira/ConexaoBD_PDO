@@ -2,59 +2,96 @@ const form = document.querySelector(".form");
 const submit = document.getElementById("btnSubmit");
 const senha = document.getElementById("senha");
 const senhaConfirmacao = document.getElementById("senhaConfirma");
+const errorMessage = document.querySelector(".input-control #error");
+const errorMessageConfirm = document.querySelector(".input-control #errorConfirm");
+const errorMessageEmail = document.querySelector(".input-control #errorEmail");
+const ErrorNulo = document.querySelector(".input-control .null");
+
+
+
+const frases = [
+    "Preenchimento de senha é obrigatório.",
+    "A Senha precisa de no mínimo 8 caracteres.",
+    "A senha precisa de pelo menos uma letra minúscula e maiúscula.",
+    "A senha precisa conter pelo menos 1 número.",
+    "A senha precisa conter pelo menos 1 caracter especial (!@#$_%&*).",
+    "Confirmação de senha é obrigatória.",
+    "As senhas não conferem. Tente novamente.",
+    "O Email não pode estar vazio.",
+    "Insira um Email válido."
+];
 
 function checkSenha() {
-   
     const valorSenha = senha.value;
     const valorSenhaConfirmacao = senhaConfirmacao.value;
+    const email = document.querySelector('#email');
+    const emailValue = email.value;
+    
+    const icon = /([!@#$%&*_])/;
+    const number = /([0-9])/;
+    const word = /([a-z].*[A-Z])|([A-Z].*[a-z])/;
 
-    var icon = /([!@#$%&*_])/;
-    var number = /([0-9])/;
-    var word = /([a-z].*[A-Z])|([A-Z].*[a-z])/;
-    if (valorSenha === "") {
-        console.warn("Preenchimento de senha é obrigatório.");
-        return false;
+    let mensagemErro = "";
+    let mensagemErroEmail = "";
+    let mensagemErroConfirm = "";
+    
+// confirmações de senha    
+   if(emailValue === '') {
+    mensagemErroEmail= frases[7];
+    
+  }
+  else if (!checkEmail(emailValue)) {
+      
+    mensagemErroEmail= frases[8];
+  }
+  else  if (valorSenha === "") {
+
+        mensagemErro = frases[0];
     } else if (valorSenha.length < 8) {
-        console.warn("A Senha precisa de no mínimo 8 caracteres.");
-        return false;
-    }else if (!valorSenha.match(word)){
-        console.warn("A senha precisa de pelo menos uma letra minúscula e maiúscula");
+        mensagemErro = frases[1];
+    } else if (!valorSenha.match(word)) {
+        mensagemErro = frases[2];
     } else if (!valorSenha.match(number)) {
-           console.warn("A senha precisa conter pelo menos 1 número.");
-            return false;
-    }else if (!valorSenha.match(icon)) {
-            console.warn("A senha precisa conter pelo menos 1 caracter especial (!@#$_%&*).");
-            return false;
+        mensagemErro = frases[3];
+    } else if (!valorSenha.match(icon)) {
+        mensagemErro = frases[4];
     } else if (valorSenhaConfirmacao === "") {
-        console.warn("Confirmação de senha é obrigatória.");
-        return false;
+        mensagemErroConfirm = frases[5];
     } else if (valorSenhaConfirmacao !== valorSenha) {
-        console.warn("As senhas não conferem. Tente novamente.");
-        return false;
-    }else {
-        return true;
+        mensagemErroConfirm= frases[6];
     }
-   
+    
+    
+    
+    
+    // confirmações dos outros campos
+
+
+    
+
+    errorMessage.innerHTML = mensagemErro; 
+    errorMessageConfirm.innerHTML = mensagemErroConfirm; 
+    errorMessageEmail.innerHTML = mensagemErroEmail; 
+    return mensagemErro === ""; 
+
 }
 
 function quandoInputModificado() {
     const senhaValida = checkSenha();
-    console.log(senhaValida);
-
-    const valido = senhaValida;
-    if (valido) {
-        submit.disabled = false;
-
-    } else {
-        submit.disabled = true;
-    }
+    submit.disabled = !senhaValida;
 }
+
 
 for (const input of form.querySelectorAll("input")) {
-    input.addEventListener("keyup", () => quandoInputModificado());
+    input.addEventListener("keyup", quandoInputModificado);
 }
-    
-
 
 
 quandoInputModificado();
+
+
+function checkEmail(email) {
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+      email
+    );
+}

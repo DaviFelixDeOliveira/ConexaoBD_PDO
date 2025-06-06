@@ -21,41 +21,50 @@
         <label class="input-control">
             <input name="nm_usuario"  class="input" type="text" placeholder="" required="">
             <span>Nome</span>
+            <small class="null"></small>
             <!-- <i class="fa-solid fa-user"></i> -->
         </label>
         <label class="input-control">
             <input class="input"  name="nm_sobrenome" type="text" placeholder="" required="">
             <span>Sobrenome</span>
+            <small class="null"></small>
             <!-- <i class="fa-solid fa-user"></i> -->
         </label>
-
-
+        
+        
         <label class="input-control">
-            <input class="input" type="email" name="nm_email" placeholder="" required="" value="">
-                <span>Email</span>
-                <!-- <i class="fa-solid fa-envelope"></i> -->
+            <input class="input" id="email" type="email" name="nm_email" placeholder="" required="" value="">
+            <span>Email</span>
+            <small id="errorEmail"></small>
+            <!-- <i class="fa-solid fa-envelope"></i> -->
         </label>
         
-            <label>
-                <input class="input"  name="login" type="text" placeholder="" required="">
-                <span>Login</span>
-                <!-- <i class="fa-solid fa-right-to-bracket"></i> -->
-            </label>
+        <label>
+            <input class="input"  name="login" type="text" placeholder="" required="">
+            <span>Login</span>
+            <small class="null"></small>
+            <!-- <i class="fa-solid fa-right-to-bracket"></i> -->
+        </label>
         <label class="input-control">
             <input class="input" name="nm_senha" id="senha" type="password" placeholder="" required="">
-            <span>Senha</span>
+            <span id="placeholder">Senha</span>
+            <small id="error"></small>
             <!-- <i class="fa-solid fa-key"></i> -->
-
+            
+            
+            
         </label>
         <label class="input-control">
             <input class="input"  type="password" id="senhaConfirma" placeholder="" required="">
-            <span>Confirme sua senha</span>
+            <span id="placeholder">Confirme sua senha</span>
+            <small id="errorConfirm"></small>
             <!-- <i class="fa-solid fa-key"></i> -->
-
+            
         </label class="input-control">
         <label>
             <input class="input" name="nr_fone" type="number" placeholder="" required="">
             <span>Número</span>
+            <small class="null"></small>
             <!-- <i class="fa-solid fa-phone"></i> -->
         </label>
         <label>
