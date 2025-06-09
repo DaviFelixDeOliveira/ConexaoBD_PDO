@@ -19,15 +19,15 @@
         </div>
 
         <label class="input-control">
-            <input name="nm_usuario"  class="input" type="text" placeholder="" required="">
+            <input name="nm_usuario"  class="input" id="nome" type="text" placeholder="" required="">
             <span>Nome</span>
-            <small class="null"></small>
+            <small id="errorName"></small>
             <!-- <i class="fa-solid fa-user"></i> -->
         </label>
         <label class="input-control">
-            <input class="input"  name="nm_sobrenome" type="text" placeholder="" required="">
-            <span>Sobrenome</span>
-            <small class="null"></small>
+            <input class="input"  name="nm_sobrenome" id="sobrenome" type="text" placeholder="" required="">
+            <span id="errorLastName">Sobrenome</span>
+            <small></small>
             <!-- <i class="fa-solid fa-user"></i> -->
         </label>
         
@@ -40,9 +40,9 @@
         </label>
         
         <label>
-            <input class="input"  name="login" type="text" placeholder="" required="">
+            <input class="input" id="login"  name="login" type="text" placeholder="" required="">
             <span>Login</span>
-            <small class="null"></small>
+            <small id="errorLogin"></small>
             <!-- <i class="fa-solid fa-right-to-bracket"></i> -->
         </label>
         <label class="input-control">
@@ -62,9 +62,9 @@
             
         </label class="input-control">
         <label>
-            <input class="input" name="nr_fone" type="number" placeholder="" required="">
+            <input class="input" name="nr_fone" type="number" id="numero" placeholder="" required="">
             <span>Número</span>
-            <small class="null"></small>
+            <small id="errorNumber"></small>
             <!-- <i class="fa-solid fa-phone"></i> -->
         </label>
         <label>

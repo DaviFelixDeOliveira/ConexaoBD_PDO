@@ -5,9 +5,14 @@ const senhaConfirmacao = document.getElementById("senhaConfirma");
 const errorMessage = document.querySelector(".input-control #error");
 const errorMessageConfirm = document.querySelector(".input-control #errorConfirm");
 const errorMessageEmail = document.querySelector(".input-control #errorEmail");
-const ErrorNulo = document.querySelector(".input-control .null");
-
-
+const nome = document.getElementById("nome");
+const errorName = document.getElementById("errorName");
+const sobrenome = document.getElementById("sobrenome");
+const errorLastName = document.getElementById("errorLastName");
+const login =  document.getElementById("login");
+const ErrorLogin=  document.getElementById("errorLogin");
+const numero = document.getElementById("numero");
+const errorNumber = document.getElementById("errorNumber");
 
 const frases = [
     "Preenchimento de senha é obrigatório.",
@@ -18,7 +23,12 @@ const frases = [
     "Confirmação de senha é obrigatória.",
     "As senhas não conferem. Tente novamente.",
     "O Email não pode estar vazio.",
-    "Insira um Email válido."
+    "Insira um Email válido.",
+    "Campo nome vazio.",
+    "Campo Sobrenome vazio.",
+    "Campo login vazio.",
+    "Campo numero vazio.",
+    "Inválido. Insira um número" 
 ];
 
 function checkSenha() {
@@ -26,6 +36,11 @@ function checkSenha() {
     const valorSenhaConfirmacao = senhaConfirmacao.value;
     const email = document.querySelector('#email');
     const emailValue = email.value;
+    const valorNome = nome.value;
+    const sobrenome = sobrenome.value;
+    const login = login.value;
+    const numero = numero.value;
+    
     
     const icon = /([!@#$%&*_])/;
     const number = /([0-9])/;
@@ -34,17 +49,15 @@ function checkSenha() {
     let mensagemErro = "";
     let mensagemErroEmail = "";
     let mensagemErroConfirm = "";
+    let mensagemErroNome = "";
+    let mensagemErroSobreNome = "";
+    let mensagemErroLogin = "";
+    let mensagemErroNumero = "";
+    
     
 // confirmações de senha    
-   if(emailValue === '') {
-    mensagemErroEmail= frases[7];
-    
-  }
-  else if (!checkEmail(emailValue)) {
-      
-    mensagemErroEmail= frases[8];
-  }
-  else  if (valorSenha === "") {
+  
+    if (valorSenha === "") {
 
         mensagemErro = frases[0];
     } else if (valorSenha.length < 8) {
@@ -55,7 +68,7 @@ function checkSenha() {
         mensagemErro = frases[3];
     } else if (!valorSenha.match(icon)) {
         mensagemErro = frases[4];
-    } else if (valorSenhaConfirmacao === "") {
+    }  if (valorSenhaConfirmacao === "") {
         mensagemErroConfirm = frases[5];
     } else if (valorSenhaConfirmacao !== valorSenha) {
         mensagemErroConfirm= frases[6];
@@ -66,7 +79,20 @@ function checkSenha() {
     
     // confirmações dos outros campos
 
+    if(emailValue === '') {
+        mensagemErroEmail= frases[7];
+        
+      }
+      else if (!checkEmail(emailValue)) {
+          
+        mensagemErroEmail= frases[8];
+      }
 
+      if(valorNome === ''){
+        mensagemErroNome = frases[9];
+      }
+
+    
     
 
     errorMessage.innerHTML = mensagemErro; 
