@@ -18,10 +18,15 @@
             <p class="title">Formulário de Cadastro </p>
         </div>
 
+        <label>
+            <input class="input" name="img_foto" type="file" placeholder="" required="">
+            <span>Foto (Opcioinal)</span> 
+         <!-- <i class="fa-solid fa-phone"></i> -->
+        </label>
         <label class="input-control">
             <input name="nm_usuario"  class="input" id="nome" type="text" placeholder="" required="">
             <span>Nome</span>
-            <!-- <small id="errorName"></small> -->
+             <small id="errorName"></small> 
             <!-- <i class="fa-solid fa-user"></i> -->
         </label>
         <label class="input-control">
@@ -45,6 +50,16 @@
             <!-- <small id="errorLogin"></small> -->
             <!-- <i class="fa-solid fa-right-to-bracket"></i> -->
         </label>
+    
+            
+        </label class="input-control">
+        <label>
+            <input class="input" name="nr_fone" type="number" id="numero" placeholder="" required="">
+            <span>Número</span>
+            <!-- <small id="errorNumber"></small> -->
+            <!-- <i class="fa-solid fa-phone"></i> -->
+        </label>
+     
         <label class="input-control">
             <input class="input" name="nm_senha" id="senha" type="password" placeholder="" required="">
             <span id="placeholder">Senha</span>
@@ -57,22 +72,10 @@
         <label class="input-control">
             <input class="input"  type="password" id="senhaConfirma" placeholder="" required="">
             <span id="placeholder">Confirme sua senha</span>
-            <small id="errorConfirm"></small>
+            <small id="errorConfirm"></small> 
             <!-- <i class="fa-solid fa-key"></i> -->
+        </label>
             
-        </label class="input-control">
-        <label>
-            <input class="input" name="nr_fone" type="number" id="numero" placeholder="" required="">
-            <span>Número</span>
-            <!-- <small id="errorNumber"></small> -->
-            <!-- <i class="fa-solid fa-phone"></i> -->
-        </label>
-        <label>
-            <input class="input" name="img_foto" type="file" placeholder="" required="">
-            <span>Foto (Opcioinal)</span>
-            <!-- <i class="fa-solid fa-phone"></i> -->
-        </label>
-
         <input type="submit" class="enviar"  id="btnSubmit" value="Entrar">
 <!--         
     <i class="fa-solid fa-eye-slash"></i>

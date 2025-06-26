@@ -7,122 +7,82 @@ const errorMessage = document.querySelector(".input-control #error");
 const errorMessageConfirm = document.querySelector(".input-control #errorConfirm");
 const errorMessageEmail = document.querySelector(".input-control #errorEmail");
 
-
-errorMessage.style.display= 'none';
-errorMessageConfirm.style.display= 'none';
-errorMessageEmail.style.display= 'none';
 const frases = [
-    "Preenchimento de senha é obrigatório.",
-    "A Senha precisa de no mínimo 8 caracteres.",
-    "A senha precisa de pelo menos uma letra minúscula e maiúscula.",
-    "A senha precisa conter pelo menos 1 número.",
-    "A senha precisa conter pelo menos 1 caracter especial (!@#$_%&*).",
-    "Confirmação de senha é obrigatória.",
-    "As senhas não conferem. Tente novamente.",
-    "O Email não pode estar vazio.",
-    "Insira um Email válido.",
-    "Campo nome vazio.",
-    "Campo Sobrenome vazio.",
-    "Campo login vazio.",
-    "Campo numero vazio.",
-    "Inválido. Insira um número" 
+  "Preenchimento de senha é obrigatório.",
+  "A Senha precisa de no mínimo 8 caracteres.",
+  "A senha precisa de pelo menos uma letra minúscula e maiúscula.",
+  "A senha precisa conter pelo menos 1 número.",
+  "A senha precisa conter pelo menos 1 caracter especial (!@#$_%&*).",
+  "Confirmação de senha é obrigatória.",
+  "As senhas não conferem. Tente novamente.",
+  "O Email não pode estar vazio.",
+  "Insira um Email válido.",
+  "Campo nome vazio.",
+  "Campo Sobrenome vazio.",
+  "Campo login vazio.",
+  "Campo numero vazio.",
+  "Inválido. Insira um número",
 ];
 
 function checkSenha() {
-    const valorSenha = senha.value;
-    const valorSenhaConfirmacao = senhaConfirmacao.value;
-    const email = document.querySelector('#email');
-    const emailValue = email.value;
-    
-    
-    const icon = /([!@#$%&*_])/;
-    const number = /([0-9])/;
-    const word = /([a-z].*[A-Z])|([A-Z].*[a-z])/;
+  const valorSenha = senha.value;
+  const valorSenhaConfirmacao = senhaConfirmacao.value;
+  const email = document.querySelector("#email");
+  const emailValue = email.value;
 
-    let mensagemErro = "";
-    let mensagemErroEmail = "";
-    let mensagemErroConfirm = "";
-    
-    
-// confirmações de senha    
+  const icon = /([!@#$%&*_])/;
+  const number = /([0-9])/;
+  const word = /([a-z].*[A-Z])|([A-Z].*[a-z])/;
 
+  let mensagemErro = "";
+  let mensagemErroEmail = "";
+  let mensagemErroConfirm = "";
 
-if (valorSenha === "") {
-    
-    errorMessage.style.display= 'none';
+  // confirmações de senha
+
+  if (valorSenha === "") {
     mensagemErro = frases[0];
-} else if (valorSenha.length < 8) {
+  } else if (valorSenha.length < 8) {
     mensagemErro = frases[1];
-    errorMessage.style.display= 'flex';
-} else if (!valorSenha.match(word)) {
+  } else if (!valorSenha.match(word)) {
     mensagemErro = frases[2];
-    errorMessage.style.display= 'flex';
-} else if (!valorSenha.match(number)) {
+  } else if (!valorSenha.match(number)) {
     mensagemErro = frases[3];
-    errorMessage.style.display= 'flex';
-} else if (!valorSenha.match(icon)) {
+  } else if (!valorSenha.match(icon)) {
     mensagemErro = frases[4];
-    errorMessage.style.display= 'flex';
-}  if (valorSenhaConfirmacao === "") {
-        errorMessageConfirm.style.display= 'none';
-        mensagemErroConfirm = frases[5];
-    } else if (valorSenhaConfirmacao !== valorSenha) {
-        errorMessageConfirm.style.display= 'flex';
-        mensagemErroConfirm= frases[6];
-    }
-    
-    else{
-        errorMessageConfirm.style.display= 'none';
-    }
-    
-    if(emailValue === '') {
-        mensagemErroEmail= frases[7];
-        errorMessageEmail.style.display= 'none';
-        
-    }
-    else if (!checkEmail(emailValue)) {
-        
-        errorMessageEmail.style.display= 'flex';
-        mensagemErroEmail= frases[8];
-    }
+  }
+  if (valorSenhaConfirmacao === "") {
+    mensagemErroConfirm = frases[5];
+  } else if (valorSenhaConfirmacao !== valorSenha) {
+    mensagemErroConfirm = frases[6];
+  } else {
+  }
 
-    
-    
-    
-    
-    
+  if (emailValue === "") {
+    mensagemErroEmail = frases[7];
+  } else if (!checkEmail(emailValue)) {
+    mensagemErroEmail = frases[8];
+  }
 
-
-    
-    
-
-    errorMessage.innerHTML = mensagemErro; 
-    errorMessageConfirm.innerHTML = mensagemErroConfirm; 
-    errorMessageEmail.innerHTML = mensagemErroEmail; 
-    return mensagemErro === ""; 
-    
+  errorMessage.innerHTML = mensagemErro;
+  errorMessageConfirm.innerHTML = mensagemErroConfirm;
+  errorMessageEmail.innerHTML = mensagemErroEmail;
+  return mensagemErro === "";
 }
-
 
 function quandoInputModificado() {
-    
-
-    const senhaValida = checkSenha();
-    submit.disabled = !senhaValida;
+  const senhaValida = checkSenha();
+  submit.disabled = !senhaValida;
 }
-
 
 for (const input of form.querySelectorAll("input")) {
-    input.addEventListener("keyup", quandoInputModificado);
-    
+  input.addEventListener("keyup", quandoInputModificado);
 }
-
 
 quandoInputModificado();
 
-
 function checkEmail(email) {
-    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-      email
-    );
+  return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+    email
+  );
 }
