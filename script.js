@@ -2,18 +2,15 @@ const form = document.querySelector(".form");
 const submit = document.getElementById("btnSubmit");
 const senha = document.getElementById("senha");
 const senhaConfirmacao = document.getElementById("senhaConfirma");
+// mensagem de erro senha, confirmação de senha e email, respecivamente
 const errorMessage = document.querySelector(".input-control #error");
 const errorMessageConfirm = document.querySelector(".input-control #errorConfirm");
 const errorMessageEmail = document.querySelector(".input-control #errorEmail");
-const nome = document.getElementById("nome");
-const errorName = document.getElementById("errorName");
-const sobrenome = document.getElementById("sobrenome");
-const errorLastName = document.getElementById("errorLastName");
-const login =  document.getElementById("login");
-const ErrorLogin=  document.getElementById("errorLogin");
-const numero = document.getElementById("numero");
-const errorNumber = document.getElementById("errorNumber");
 
+
+errorMessage.style.display= 'none';
+errorMessageConfirm.style.display= 'none';
+errorMessageEmail.style.display= 'none';
 const frases = [
     "Preenchimento de senha é obrigatório.",
     "A Senha precisa de no mínimo 8 caracteres.",
@@ -36,10 +33,6 @@ function checkSenha() {
     const valorSenhaConfirmacao = senhaConfirmacao.value;
     const email = document.querySelector('#email');
     const emailValue = email.value;
-    const valorNome = nome.value;
-    const sobrenome = sobrenome.value;
-    const login = login.value;
-    const numero = numero.value;
     
     
     const icon = /([!@#$%&*_])/;
@@ -49,48 +42,56 @@ function checkSenha() {
     let mensagemErro = "";
     let mensagemErroEmail = "";
     let mensagemErroConfirm = "";
-    let mensagemErroNome = "";
-    let mensagemErroSobreNome = "";
-    let mensagemErroLogin = "";
-    let mensagemErroNumero = "";
     
     
 // confirmações de senha    
-  
-    if (valorSenha === "") {
 
-        mensagemErro = frases[0];
-    } else if (valorSenha.length < 8) {
-        mensagemErro = frases[1];
-    } else if (!valorSenha.match(word)) {
-        mensagemErro = frases[2];
-    } else if (!valorSenha.match(number)) {
-        mensagemErro = frases[3];
-    } else if (!valorSenha.match(icon)) {
-        mensagemErro = frases[4];
-    }  if (valorSenhaConfirmacao === "") {
+
+if (valorSenha === "") {
+    
+    errorMessage.style.display= 'none';
+    mensagemErro = frases[0];
+} else if (valorSenha.length < 8) {
+    mensagemErro = frases[1];
+    errorMessage.style.display= 'flex';
+} else if (!valorSenha.match(word)) {
+    mensagemErro = frases[2];
+    errorMessage.style.display= 'flex';
+} else if (!valorSenha.match(number)) {
+    mensagemErro = frases[3];
+    errorMessage.style.display= 'flex';
+} else if (!valorSenha.match(icon)) {
+    mensagemErro = frases[4];
+    errorMessage.style.display= 'flex';
+}  if (valorSenhaConfirmacao === "") {
+        errorMessageConfirm.style.display= 'none';
         mensagemErroConfirm = frases[5];
     } else if (valorSenhaConfirmacao !== valorSenha) {
+        errorMessageConfirm.style.display= 'flex';
         mensagemErroConfirm= frases[6];
     }
     
+    else{
+        errorMessageConfirm.style.display= 'none';
+    }
     
-    
-    
-    // confirmações dos outros campos
-
     if(emailValue === '') {
         mensagemErroEmail= frases[7];
+        errorMessageEmail.style.display= 'none';
         
-      }
-      else if (!checkEmail(emailValue)) {
-          
+    }
+    else if (!checkEmail(emailValue)) {
+        
+        errorMessageEmail.style.display= 'flex';
         mensagemErroEmail= frases[8];
-      }
+    }
 
-      if(valorNome === ''){
-        mensagemErroNome = frases[9];
-      }
+    
+    
+    
+    
+    
+
 
     
     
@@ -99,10 +100,13 @@ function checkSenha() {
     errorMessageConfirm.innerHTML = mensagemErroConfirm; 
     errorMessageEmail.innerHTML = mensagemErroEmail; 
     return mensagemErro === ""; 
-
+    
 }
 
+
 function quandoInputModificado() {
+    
+
     const senhaValida = checkSenha();
     submit.disabled = !senhaValida;
 }
@@ -110,6 +114,7 @@ function quandoInputModificado() {
 
 for (const input of form.querySelectorAll("input")) {
     input.addEventListener("keyup", quandoInputModificado);
+    
 }
 
 
