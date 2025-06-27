@@ -1,91 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Formulário de Cadastro</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
-
-    <form class="form" method="post" action="insert.php" >
+    <form class="form" id="registrationForm">
         <div class="header">
-            <p class="title">Formulário de Cadastro </p>
+            <p class="title">Formulário de Cadastro</p>
         </div>
 
         <label>
-            <input class="input" name="img_foto" type="file" placeholder="" required="">
-            <span>Foto (Opcioinal)</span> 
-         <!-- <i class="fa-solid fa-phone"></i> -->
+            <input class="input" name="img_foto" type="file" />
+            <span>Foto (Opcional)</span>
         </label>
+
         <label class="input-control">
-            <input name="nm_usuario"  class="input" id="nome" type="text" placeholder="" required="">
+            <input class="input" id="nome" name="nm_usuario" type="text" required />
             <span>Nome</span>
-             <small id="errorName"></small> 
-            <!-- <i class="fa-solid fa-user"></i> -->
+            <small id="errorName"></small>
         </label>
+
         <label class="input-control">
-            <input class="input"  name="nm_sobrenome" id="sobrenome" type="text" placeholder="" required="">
-            <span id="errorLastName">Sobrenome</span>
-            <!-- <small></small> -->
-            <!-- <i class="fa-solid fa-user"></i> -->
+            <input class="input" id="sobrenome" name="nm_sobrenome" type="text" required />
+            <span>Sobrenome</span>
+            <small id="errorLastName"></small>
         </label>
-        
-        
+
         <label class="input-control">
-            <input class="input" id="email" type="email" name="nm_email" placeholder="" required="" value="">
+            <input class="input" id="email" name="nm_email" type="email" required />
             <span>Email</span>
             <small id="errorEmail"></small>
-            <!-- <i class="fa-solid fa-envelope"></i> -->
         </label>
-        
+
         <label>
-            <input class="input" id="login"  name="login" type="text" placeholder="" required="">
+            <input class="input" id="login" name="nm_login" type="text" required />
             <span>Login</span>
-            <!-- <small id="errorLogin"></small> -->
-            <!-- <i class="fa-solid fa-right-to-bracket"></i> -->
         </label>
-    
-            
-        </label class="input-control">
-        <label>
-            <input class="input" name="nr_fone" type="number" id="numero" placeholder="" required="">
+
+        <label class="input-control">
+            <input class="input" id="numero" name="nr_fone" type="number" required />
             <span>Número</span>
-            <!-- <small id="errorNumber"></small> -->
-            <!-- <i class="fa-solid fa-phone"></i> -->
         </label>
-     
+
         <label class="input-control">
-            <input class="input" name="nm_senha" id="senha" type="password" placeholder="" required="">
-            <span id="placeholder">Senha</span>
+            <input class="input" id="senha" name="nm_senha" type="password" required />
+            <span>Senha</span>
             <small id="error"></small>
-            <!-- <i class="fa-solid fa-key"></i> -->
-            
-            
-            
         </label>
+
         <label class="input-control">
-            <input class="input"  type="password" id="senhaConfirma" placeholder="" required="">
-            <span id="placeholder">Confirme sua senha</span>
-            <small id="errorConfirm"></small> 
-            <!-- <i class="fa-solid fa-key"></i> -->
+            <input class="input" id="senhaConfirma" type="password" required />
+            <span>Confirme sua senha</span>
+            <small id="errorConfirm"></small>
         </label>
-            
-        <input type="submit" class="enviar"  id="btnSubmit" value="Entrar">
-<!--         
-    <i class="fa-solid fa-eye-slash"></i>
-    <i class="fa-solid fa-eye"></i> -->
+
+        <input type="submit" class="enviar" id="btnSubmit" value="Entrar" disabled />
     </form>
 
+    <div class="teste"></div>
+
     <script src="script.js"></script>
-    <script src="https://kit.fontawesome.com/fe31542f8a.js" crossorigin="anonymous"></script>
-
-
 </body>
 
 </html>

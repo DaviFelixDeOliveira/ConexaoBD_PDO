@@ -1,88 +1,117 @@
-const form = document.querySelector(".form");
-const submit = document.getElementById("btnSubmit");
-const senha = document.getElementById("senha");
-const senhaConfirmacao = document.getElementById("senhaConfirma");
-// mensagem de erro senha, confirmação de senha e email, respecivamente
-const errorMessage = document.querySelector(".input-control #error");
-const errorMessageConfirm = document.querySelector(".input-control #errorConfirm");
-const errorMessageEmail = document.querySelector(".input-control #errorEmail");
+$(document).ready(function () {
+  const form = $("#registrationForm");
+  const submit = $("#btnSubmit");
+  const senha = $("#senha");
+  const senhaConfirmacao = $("#senhaConfirma");
+  const errorMessage = $("#error");
+  const errorMessageConfirm = $("#errorConfirm");
+  const errorMessageEmail = $("#errorEmail");
 
-const frases = [
-  "Preenchimento de senha é obrigatório.",
-  "A Senha precisa de no mínimo 8 caracteres.",
-  "A senha precisa de pelo menos uma letra minúscula e maiúscula.",
-  "A senha precisa conter pelo menos 1 número.",
-  "A senha precisa conter pelo menos 1 caracter especial (!@#$_%&*).",
-  "Confirmação de senha é obrigatória.",
-  "As senhas não conferem. Tente novamente.",
-  "O Email não pode estar vazio.",
-  "Insira um Email válido.",
-  "Campo nome vazio.",
-  "Campo Sobrenome vazio.",
-  "Campo login vazio.",
-  "Campo numero vazio.",
-  "Inválido. Insira um número",
-];
+  const frasesErro = [
+    "Preenchimento de senha é obrigatório.",
+    "A Senha precisa de no mínimo 8 caracteres.",
+    "A senha precisa de pelo menos uma letra minúscula e maiúscula.",
+    "A senha precisa conter pelo menos 1 caracter especial (!@#$_%&*).",
+    "A senha precisa conter pelo menos 1 número.",
+    "Confirmação de senha é obrigatória.",
+    "As senhas não conferem. Tente novamente.",
+    "O Email não pode estar vazio.",
+    "Insira um Email válido.",
+  ];
 
-function checkSenha() {
-  const valorSenha = senha.value;
-  const valorSenhaConfirmacao = senhaConfirmacao.value;
-  const email = document.querySelector("#email");
-  const emailValue = email.value;
+  function checkSenha() {
+    const valorSenha = senha.val();
+    const valorSenhaConfirmacao = senhaConfirmacao.val();
+    const emailValue = $("#email").val();
 
-  const icon = /([!@#$%&*_])/;
-  const number = /([0-9])/;
-  const word = /([a-z].*[A-Z])|([A-Z].*[a-z])/;
+    const caracter = /([!@#$%&*_])/;
+    const numero = /([0-9])/;
+    const LetraContem = /([a-z].*[A-Z])|([A-Z].*[a-z])/;
 
-  let mensagemErro = "";
-  let mensagemErroEmail = "";
-  let mensagemErroConfirm = "";
+    let mensagemErro = "";
+    let mensagemErroEmail = "";
+    let mensagemErroConfirm = "";
 
-  // confirmações de senha
+    if (valorSenha === "") {
+      mensagemErro = frasesErro[0];
+    } else if (valorSenha.length < 8) {
+      mensagemErro = frasesErro[1];
+    } else if (!valorSenha.match(LetraContem)) {
+      mensagemErro = frasesErro[2];
+    } else if (!valorSenha.match(numero)) {
+      mensagemErro = frasesErro[4];
+    } else if (!valorSenha.match(caracter)) {
+      mensagemErro = frasesErro[3];
+    }
 
-  if (valorSenha === "") {
-    mensagemErro = frases[0];
-  } else if (valorSenha.length < 8) {
-    mensagemErro = frases[1];
-  } else if (!valorSenha.match(word)) {
-    mensagemErro = frases[2];
-  } else if (!valorSenha.match(number)) {
-    mensagemErro = frases[3];
-  } else if (!valorSenha.match(icon)) {
-    mensagemErro = frases[4];
+    if (valorSenhaConfirmacao === "") {
+      mensagemErroConfirm = frasesErro[5];
+    } else if (valorSenhaConfirmacao !== valorSenha) {
+      mensagemErroConfirm = frasesErro[6];
+    }
+
+    if (emailValue === "") {
+      mensagemErroEmail = frasesErro[7];
+    } else if (!checkEmail(emailValue)) {
+      mensagemErroEmail = frasesErro[8];
+    }
+
+    errorMessage.text(mensagemErro);
+    errorMessageConfirm.text(mensagemErroConfirm);
+    errorMessageEmail.text(mensagemErroEmail);
+
+    return (
+      mensagemErro === "" &&
+      mensagemErroConfirm === "" &&
+      mensagemErroEmail === ""
+    );
   }
-  if (valorSenhaConfirmacao === "") {
-    mensagemErroConfirm = frases[5];
-  } else if (valorSenhaConfirmacao !== valorSenha) {
-    mensagemErroConfirm = frases[6];
-  } else {
+
+  function quandoInputModificado() {
+    const valido = checkSenha();
+    submit.prop("disabled", !valido);
   }
 
-  if (emailValue === "") {
-    mensagemErroEmail = frases[7];
-  } else if (!checkEmail(emailValue)) {
-    mensagemErroEmail = frases[8];
+  form.on("keyup", "input", quandoInputModificado);
+
+  form.on("submit", function (event) {
+    event.preventDefault();
+
+    if (checkSenha()) {
+      let user = $("#nome").val();
+      let sobrenome = $("#sobrenome").val();
+      let senha = $("#senha").val();
+      let login = $("#login").val();
+      let email = $("#email").val();
+      let fone = $("#numero").val(); // <-- ESSA LINHA FALTAVA
+
+      $.ajax({
+        type: "POST",
+        url: "insert.php",
+        data: {
+          nm_usuario: user,
+          nm_sobrenome: sobrenome,
+          nm_senha: senha,
+          nm_login: login,
+          nm_email: email,
+          nr_fone: fone,
+        },
+        dataType: "html",
+        success: function (response) {
+  $(".teste").html(response);
+        },
+        error: function (response) {
+          alert("Erro ao cadastrar usuário. Tente novamente.");
+        },
+      });
+    }
+  });
+
+  quandoInputModificado();
+
+  function checkEmail(email) {
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+      email
+    );
   }
-
-  errorMessage.innerHTML = mensagemErro;
-  errorMessageConfirm.innerHTML = mensagemErroConfirm;
-  errorMessageEmail.innerHTML = mensagemErroEmail;
-  return mensagemErro === "";
-}
-
-function quandoInputModificado() {
-  const senhaValida = checkSenha();
-  submit.disabled = !senhaValida;
-}
-
-for (const input of form.querySelectorAll("input")) {
-  input.addEventListener("keyup", quandoInputModificado);
-}
-
-quandoInputModificado();
-
-function checkEmail(email) {
-  return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-    email
-  );
-}
+});

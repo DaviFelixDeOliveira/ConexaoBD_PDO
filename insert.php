@@ -15,7 +15,7 @@
     $sobrenome = $_POST['nm_sobrenome'];
     $email = $_POST['nm_email']; //"davi@gmail.com";
     $senha = $_POST['nm_senha']; //"1234" ;
-    $login = $_POST['login'];
+    $login = $_POST['nm_login'];
     $foto = "null";
     $numero = $_POST['nr_fone'];
 
@@ -27,7 +27,6 @@
     }
     ?>
 
-    <button onclick="window.history.back()">Voltar</button>
 
 
     <style>
@@ -54,18 +53,9 @@
             <td><?php echo $login; ?></td>
             <td><?php echo $foto; ?></td>
             <td><?php echo $numero; ?></td>
-
-
-
-
-
         </tr>
         </tr>
-    </table>
-
-
-
-
+    </table> 
 
     <div class="containerLocalizar">
         <h1>Localizar Cadastro</h1>
@@ -74,17 +64,12 @@
             <label for="nm_usuario">Nome:</label>
             <input type="text" name="nm_usuario" id="nm_usuario" required> <br>
 
-
-
             <label for="nm_senha">Senha:</label>
             <input type="password" name="nm_senha" id="nm_senha" required> <br>
-
-
 
             <input type="submit" value="Enviar">
         </form>
     </div>
-
 
     <div class="containerExcluir">
         <h1>Excluir Cadastro</h1>
@@ -93,18 +78,12 @@
             <label for="nm_usuario">Nome:</label>
             <input type="text" name="nm_usuario" id="nm_usuario" required> <br>
 
-
-
             <label for="nm_senha">Senha:</label>
             <input type="password" name="nm_senha" id="nm_senha" required> <br>
-
-
 
             <input type="submit" value="Enviar">
         </form>
     </div>
-
-
 
 </body>
 
