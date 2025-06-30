@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  const form = $("#registrationForm");
+  const form = $("#form");
   const submit = $("#btnSubmit");
   const senha = $("#senha");
   const senhaConfirmacao = $("#senhaConfirma");
@@ -52,9 +52,7 @@ $(document).ready(function () {
 
     if (emailValue === "") {
       mensagemErroEmail = frasesErro[7];
-    } else if (!checkEmail(emailValue)) {
-      mensagemErroEmail = frasesErro[8];
-    }
+    } 
 
     errorMessage.text(mensagemErro);
     errorMessageConfirm.text(mensagemErroConfirm);
@@ -109,9 +107,5 @@ $(document).ready(function () {
 
   quandoInputModificado();
 
-  function checkEmail(email) {
-    return  /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
-      email
-    );
-  }
+ 
 });

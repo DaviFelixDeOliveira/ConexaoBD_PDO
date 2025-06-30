@@ -16,10 +16,10 @@
     $email = $_POST['nm_email']; //"davi@gmail.com";
     $senha = $_POST['nm_senha']; //"1234" ;
     $login = $_POST['nm_login'];
-    $foto = "null";
     $numero = $_POST['nr_fone'];
+    $foto = "null";
 
-    $sql = "insert into tb_usuario values (null, '$nome', '$sobrenome', '$email','$login', '$senha',  '$foto', '$numero')";
+    $sql = "insert into tb_usuario values (null, '$nome', '$sobrenome', '$email','$login', '$senha',  '$numero', '$foto')";
     if ($conn->query($sql)) {
         // echo "Registro inserido com sucesso!";
 
@@ -73,7 +73,7 @@
         </form>
     </div>
 
-    <div class="containerExcluir" >
+    <div class="containerExcluir" style = "display:none;">
         <h1>Excluir Cadastro</h1>
 
         <form class="formExcluir" action="excluirCadastro.php" method="post">
