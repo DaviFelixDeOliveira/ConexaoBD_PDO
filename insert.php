@@ -57,7 +57,9 @@
         </tr>
     </table> 
 
-    <div class="containerLocalizar">
+    <!-- EM DESENVOLVIMENTO... -->
+
+    <div class="containerLocalizar" style="display: none;">
         <h1>Localizar Cadastro</h1>
 
         <form class="formLocalizar" action="localizarCadastro.php" method="post">
@@ -71,7 +73,7 @@
         </form>
     </div>
 
-    <div class="containerExcluir">
+    <div class="containerExcluir" >
         <h1>Excluir Cadastro</h1>
 
         <form class="formExcluir" action="excluirCadastro.php" method="post">
