@@ -1,5 +1,7 @@
-Create database bd_teste;
-use bd_teste;
+drop database if exists bd_cadastro ;
+Create database if not exists bd_cadastro;
+use bd_cadastro;
+
 
 create table tb_usuario(
 	cd_usuario int auto_increment primary key,
@@ -14,7 +16,8 @@ create table tb_usuario(
 
 
 
-select * from tb_usuario;
+select * from tb_usuario;	
+
 where nm_usuario and nm_senha;
 
 delete from tb_usuario
