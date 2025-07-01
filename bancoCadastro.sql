@@ -16,7 +16,8 @@ create table tb_usuario(
 
 
 
-select * from tb_usuario;	
+select cd_usuario as Código, concat(nm_usuario, ' ', nm_sobrenome) as "Nome Completo", nm_email as "E-mail", nm_login as Login,
+nr_fone as Telefone  from tb_usuario ;	
 
 where nm_usuario and nm_senha;
 
