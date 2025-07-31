@@ -83,9 +83,9 @@ $(document).ready(function () {
       let email = $("#email").val();
       let fone = $("#numero").val();
 
-      $.ajax({
-        type: "POST",
-        url: "insert.php",
+        $.ajax({
+          type: "POST",
+          url: "insert.php",
         data: {
           nm_usuario: user,
           nm_sobrenome: sobrenome,
@@ -95,9 +95,9 @@ $(document).ready(function () {
           nr_fone: fone,
         },
         dataType: "html",
-        success: function (response) {
-  $(".teste").html(response);
-        },
+         success: function (response) {
+   $(".teste").html(response);
+         },
         error: function (response) {
           alert("Erro ao cadastrar usuário. Tente novamente.");
         },

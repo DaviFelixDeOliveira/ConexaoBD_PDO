@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Formulário de Cadastro</title>
+    <link rel="stylesheet" href="styleLogin.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <form class="form" id="form">
+        <div class="header">
+            <p class="title">Formulário de Login</p>
+        </div>
+
+       
+
+        <label class="input-control">
+            <input class="input" id="nome" name="nm_usuario" type="text" required />
+            <span>Nome</span>
+            <small id="errorName"></small>
+        </label>  
+
+        <label class="input-control">
+            <input class="input" id="senha" name="nm_senha" type="password" required />
+            <span>Senha</span>
+            <small id="error"></small>
+        </label>
+
+
+        <input type="submit" class="enviar" id="btnSubmit" value="Entrar" disabled />
+    </form>
+
+    <div class="teste"></div>
+
+
+    <script>
+
+        $(document).ready(function () {
+
+              $.ajax({
+          type: "POST",
+          url: "login.php",
+        data: {
+          nm_usuario: user,
+          nm_senha: senha,
+        },
+        dataType: "html",
+         success:  function (response) {
+   $(".teste").html(response);
+         },
+        error: function (response) {
+          alert("Erro ao cadastrar usuário. Tente novamente.");
+        },
+      });
+
+      
+
+
+    </script>
+
+</body>
+
+</html>
