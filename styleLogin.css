@@ -1,119 +1,109 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 body {
-  font-family: "Poppins", sans-serif;
-  display: flex; 
-  justify-content: center;
   margin: 0;
-    /* background-color: #121212; */
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #0e0e0e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 
 .form {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 20px;
+  padding: 40px 30px;
+  max-width: 350px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  max-width: 350px;
-  padding: 30px;
-  border-radius: 20px;
-  position: relative;
-  background-color: #1a1a1a;
+  gap: 20px;
   color: #fff;
-  border: 1px solid #333;
-  padding: 50px;
-  gap: 15px;
 }
 
-
 .title {
-  font-size: 28px;
-    font-weight: 600;
-    letter-spacing: -1px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding-left: 30px;
-    color: #00bfff;
-  }
-  
-  
-  
-  .title::before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    border-radius: 100%;
-    left: 0px;
-    background-color: #00bfff;
-  }
-  
- 
-  .enviar {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 25px;
+  color: #00bfff;
+}
 
-    text-align: center;
-    border: none;
-    outline: none;
-    padding: 15px;
-    border-radius: 10px;
-    color: #fff;
-    font-size: 16px;
-    transform: .3s  ease;
-    background-color: #00bfff;
-  }
-  
- 
-  .enviar:hover {
-    background-color: #00bfff96;
-    cursor: pointer;
-     text-decoration: underline royalblue;
-  }
- 
-  
-  .enviar a {
-    color: #00bfff;
-  }
-  
+.title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #00bfff;
+}
 
-  
-  .form label {
-    position: relative;
-  }
-  
-  .form label .input {
-    background-color: #333;
-    color: #fff;
-    width: 100%;
-    padding: 20px 05px 05px 10px;
-    outline: 0;
-    border: 1px solid rgba(105, 105, 105, 0.397);
-    border-radius: 10px;
-  }
-  
-  .form label .input + span {
-    color: rgba(255, 255, 255, 0.5);
-    position: absolute;
-    left: 10px;
-    top: 0px;
-    font-size: 0.9em;
-    cursor: text;
-    transition: 0.3s ease;
-  }
-  
-  .form label .input:placeholder-shown + span {
-    top: 12.5px;
-    font-size: 0.9em;
-  }
-  
-  .form label .input:focus + span,
-  .form label .input:valid + span {
-    color: #00bfff;
-    top: 0px;
-    font-size: 0.7em;
-    font-weight: 600;
-  }
-  
-  .input {
-    font-size: medium;
-  }
-  
+.input-control {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  background-color: #333;
+  color: #fff;
+  padding: 18px 10px 6px 10px;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+  font-size: 1em;
+  outline: none;
+}
+
+.input + span {
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9em;
+  transition: 0.3s ease;
+  pointer-events: none;
+}
+
+.input:focus + span,
+.input:valid + span {
+  top: 4px;
+  font-size: 0.7em;
+  font-weight: 600;
+  color: #00bfff;
+}
+
+small {
+  margin-top: 5px;
+  font-size: 0.75em;
+  color: red;
+}
+
+.enviar {
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background-color: #00bfff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.enviar:hover {
+  background-color: #00bfff96;
+  text-decoration: underline;
+}

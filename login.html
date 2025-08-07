@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form class="form" id="form">
+    <form class="form" id="form" action="login.php" method="post">
         <div class="header">
             <p class="title">Formulário de Login</p>
         </div>
@@ -36,30 +36,7 @@
     <div class="teste"></div>
 
 
-    <script>
-
-        $(document).ready(function () {
-
-              $.ajax({
-          type: "POST",
-          url: "login.php",
-        data: {
-          nm_usuario: user,
-          nm_senha: senha,
-        },
-        dataType: "html",
-         success:  function (response) {
-   $(".teste").html(response);
-         },
-        error: function (response) {
-          alert("Erro ao cadastrar usuário. Tente novamente.");
-        },
-      });
-
-      
-
-
-    </script>
+   
 
 </body>
 
