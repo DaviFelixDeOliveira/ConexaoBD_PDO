@@ -9,6 +9,7 @@ $senha =  $_POST['nm_senha'];
 
 include 'conecta.php';
 
+
 $user = $conn->query("SELECT * FROM tb_usuario  WHERE nm_usuario ='" . $nome . "' AND nm_senha = '" . $senha . "' ;")->fetch();
 if ($user) {
     echo "<pre>";

@@ -1,6 +1,6 @@
  <?php
     $username = 'root';
-    $password = '';
+    $password = 'admin';
 
     try {
         $conn = new PDO('mysql:host=localhost;dbname=bd_cadastro', $username, $password);
@@ -8,4 +8,6 @@
     } catch (PDOException $e) {
         echo 'Erro na conexão: ' . $e->getMessage();
     }
+
+    
     ?> 

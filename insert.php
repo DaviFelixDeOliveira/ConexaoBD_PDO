@@ -10,14 +10,7 @@
 <body>
 
     <?php
-    include 'conecta.php';
-    $nome = $_POST['nm_usuario']; //"davi";
-    $sobrenome = $_POST['nm_sobrenome'];
-    $email = $_POST['nm_email']; //"davi@gmail.com";
-    $senha = $_POST['nm_senha']; //"1234" ;
-    $login = $_POST['nm_login'];
-    $numero = $_POST['nr_fone'];
-    $foto = "null";
+     include 'teste.php';    
 
     $sql = "insert into tb_usuario values (null, '$nome', '$sobrenome', '$email','$login', '$senha',  '$numero', '$foto')";
     if ($conn->query($sql)) {
