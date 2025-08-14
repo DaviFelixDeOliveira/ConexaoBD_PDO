@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form class="form" id="form" action="login.php" method="post">
+    <form class="form" id="form">
         <div class="header">
             <p class="title">Formulário de Login</p>
         </div>
@@ -24,18 +24,23 @@
         </label>  
 
         <label class="input-control">
+            <input class="input" id="sobrenome" name="nm_sobrenome" type="text" required />
+            <span>Sobrenome</span>
+            <small id="errorName"></small>
+        </label>  
+
+        <label class="input-control">
             <input class="input" id="senha" name="nm_senha" type="password" required />
             <span>Senha</span>
             <small id="error"></small>
         </label>
 
 
-        <input type="submit" class="enviar" id="btnSubmit" value="Entrar" disabled />
+        <input type="submit" class="enviar" id="btnSubmit" value="Entrar"  />
+        <p class="signin">Não possui uma conta? <a href="cadastro.html">Cadastre-se</a> </p>
     </form>
 
-    <div class="teste"></div>
-
-
+    <script src="scriptLogin.js"></script>
    
 
 </body>
