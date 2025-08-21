@@ -7,7 +7,6 @@ if (!isset($_SESSION['nm_usuario'])) {
     exit;
 }
 
-// Busca todos os usuários
 $sql = "SELECT * FROM tb_usuario";
 $stmt = $conn->query($sql);
 $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -25,7 +24,6 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <h1>Bem-vindo!</h1>
 
-<!-- Botão para abrir o modal -->
 <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#usuariosModal">
   Mostrar Usuários
 </button>
@@ -48,8 +46,8 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 Telefone: <?php echo ($usuario['nr_fone'] ?? 'Não informado'); ?>
               </div>
               <div>
-                <button class="btn btn-sm btn-warning me-1"><i class="fa-solid fa-pen"></i></button>
-                <button class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
+                <button class="btn btn-sm btn-light me-1">Editar  <i class="fa-solid fa-pen"></i></button>
+                <button class="btn btn-sm btn-danger">Excluir  <i class="fa-solid fa-trash"></i></button>
               </div>
             </li>
           <?php endforeach; ?>
