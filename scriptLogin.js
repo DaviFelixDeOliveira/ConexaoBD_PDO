@@ -1,6 +1,5 @@
 $("#form").on("submit", function(event) {
   event.preventDefault();
-
   let user = $("#nome").val();
   let sobrenome = $("#sobrenome").val();
   let senha = $("#senha").val();
