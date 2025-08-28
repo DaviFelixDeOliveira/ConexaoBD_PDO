@@ -7,7 +7,7 @@ $sobrenome = $_POST['nm_sobrenome'] ?? '';
 $senha = $_POST['nm_senha'] ?? '';
 
 if (empty($nome) || empty($sobrenome) || empty($senha)) {
-    echo "faltando_campos";
+    echo "faltando campos";
     exit;
 }
 

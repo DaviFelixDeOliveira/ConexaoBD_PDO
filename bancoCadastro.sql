@@ -20,6 +20,7 @@ select
     concat (nm_usuario, ' ', nm_sobrenome) as "Nome Completo",
     nm_email as "E-mail",
     nm_login as Login,
+    nm_senha as Senha,
     nr_fone as Telefone
     from    tb_usuario;
 

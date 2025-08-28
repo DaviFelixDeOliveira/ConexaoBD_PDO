@@ -96,7 +96,7 @@ $(document).ready(function () {
         },
         dataType: "html",
          success: function (response) {
-           alert("foi.");
+           alert("Usuário Cadastrado com sucesso!.");
          },
         error: function (response) {
           alert("Erro ao cadastrar usuário. Tente novamente.");

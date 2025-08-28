@@ -16,7 +16,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Home</title>
+<title>Tela Inicial</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -41,9 +41,9 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <li class="list-group-item d-flex justify-content-between align-items-center">
               <div>
                 <strong><?php echo ($usuario['nm_usuario'] . ' ' . $usuario['nm_sobrenome']); ?></strong><br>
-                Email: <?php echo ($usuario['nm_email'] ?? 'Não informado'); ?> | 
-                Login: <?php echo ($usuario['nm_login'] ?? 'Não informado'); ?> | 
-                Telefone: <?php echo ($usuario['nr_fone'] ?? 'Não informado'); ?>
+                Email: <?php echo ($usuario['nm_email']); ?> | 
+                Login: <?php echo ($usuario['nm_login']); ?> | 
+                Telefone: <?php echo ($usuario['nr_fone']); ?>
               </div>
               <div>
                 <button class="btn btn-sm btn-light me-1">Editar  <i class="fa-solid fa-pen"></i></button>
@@ -59,6 +59,32 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </div>
     </div>
   </div>
+</div>
+<!-- Card -->
+<?php foreach ($usuarios as $usuario): ?>
+<div class="card text-center col-sm-3">
+  <div class="card-header"> 
+    #1
+  </div>
+  <div class="card-body">
+   
+
+    <h5 class="card-title"><?php echo ($usuario['nm_usuario'] . ' ' . $usuario['nm_sobrenome']); ?></h5>
+    <p class="card-text">
+
+    </p>
+    <p class="card-text"><b>Email:</b> <?php echo ($usuario['nm_email']); ?></p>
+    <p class="card-text"> <b>Login: </b> <?php echo ($usuario['nm_login']); ?></p>
+    <p class="card-text"> <b>Telefone: </b> <?php echo ($usuario['nr_fone']); ?></p>
+    <p class="card-text"></p>
+    <a href="#" class="btn btn-warning">Editar  <i class="fa-solid fa-pen"></i></button> </a>
+    <a href="#" class="btn btn-danger">Excluir  <i class="fa-solid fa-trash   "></i></button>  </a>
+  </div>
+  <div class="card-footer text-body-secondary">
+    2 days ago
+  </div>
+  <?php endforeach; ?>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
