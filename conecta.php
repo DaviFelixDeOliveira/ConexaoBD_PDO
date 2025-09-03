@@ -1,6 +1,6 @@
  <?php
     $username = 'root';
-    $password = 'admin';
+    $password = 'root';
 
     try {
         $conn = new PDO('mysql:host=localhost;dbname=bd_cadastro', $username, $password);
