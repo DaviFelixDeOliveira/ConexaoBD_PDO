@@ -24,7 +24,13 @@ select
     nr_fone as Telefone
     from    tb_usuario;
 
+
 /*where nm_usuario and nm_senha;*/
 
 delete from tb_usuario
 where cd_usuario >= 1;
+
+-- Inserindo primeiro usuário
+INSERT INTO tb_usuario VALUES (null,'Ana','Silva','ana.silva@example.com','ana_silva','senha123','(11)91234-5678', null);
+-- Inserindo segundo usuário
+INSERT INTO tb_usuario VALUES (null, 'Carlos','Ferreira','carlos.ferreira@example.com','carlos_ferreira','minhaSenha456','(21)98765-4321',NULL);
