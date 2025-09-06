@@ -20,15 +20,18 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
 </head>
 <body class="p-4">
 
 <h1>Bem-vindo!</h1>
 
+<!-- Botão abrir modal -->
 <button type="button" class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#cadastrarModal">
   Cadastrar Usuário
 </button>
 
+<!-- MODAL -->
 <div class="modal fade" id="cadastrarModal" tabindex="-1" aria-labelledby="cadastrarModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -37,57 +40,58 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
       </div>
       <div class="modal-body">
-        <form class="needs-validation " id="form">
-          <div class="form-row">
-            <div class="col-md-6 mb-3">
-              <label for="">Nome</label>
-              <input type="text" class="form-control" id="nome" name="nm_usuario" placeholder="Nome" >
-              
-             
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="">Sobrenome</label>
-              <input type="text" class="form-control" id="sobrenome" name="nm_sobrenome" placeholder="Sobrenome" >
-              
-            </div>
+
+        <!-- FORM PADRONIZADO -->
+        <form class="needs-validation" id="form" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="foto" class="form-label">Foto (Opcional)</label>
+            <input type="file" class="form-control" name="img_foto" id="foto">
           </div>
-          
-          <div class="form-row">
+
+          <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="">Email</label>
-              <input type="email" class="form-control" id="email" name="nm_email" placeholder="Email" >
-             
+              <label for="nome" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="nome" name="nm_usuario" required>
             </div>
             <div class="col-md-6 mb-3">
-              <label for="">Login</label>
-              <input type="text" class="form-control" id="login" name="nm_login" placeholder="Login" >
-             
-            </div>
-          </div>
-          
-          <div class="form-row">
-            <div class="col-md-6 mb-3">
-              <label for="">Número de telefone</label>
-              <input type="tel" class="form-control" id="numero" name="nr_fone" placeholder="Número de telefone" >
-             
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="">Senha</label>
-              <input type="password" class="form-control" id="senha" name="nm_senha" placeholder="Senha" >
-              <small id="error"></small>
-            </div>
-          </div>
-          
-          <div class="form-row">
-            <div class="col-md-6 mb-3">
-              <label for="">Confirme a Senha</label>
-              <input type="password" class="form-control" id="senhaConfirma" placeholder="Confirme a Senha" >
-              <small id="errorConfirm"></small>
+              <label for="sobrenome" class="form-label">Sobrenome</label>
+              <input type="text" class="form-control" id="sobrenome" name="nm_sobrenome" required>
             </div>
           </div>
 
-          <button  class="enviar btn btn-primary" id="btnSubmit" value="Entrar" disabled type="submit">Cadastrar</button>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="nm_email" required>
+              <small id="errorEmail" class="text-danger"></small>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="login" class="form-label">Login</label>
+              <input type="text" class="form-control" id="login" name="nm_login" required>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="numero" class="form-label">Número de telefone</label>
+              <input type="tel" class="form-control" id="numero" name="nr_fone" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="senha" class="form-label">Senha</label>
+              <input type="password" class="form-control" id="senha" name="nm_senha" required>
+              <small id="error" class="text-danger"></small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="senhaConfirma" class="form-label">Confirme a Senha</label>
+            <input type="password" class="form-control" id="senhaConfirma" required>
+            <small id="errorConfirm" class="text-danger"></small>
+          </div>
+
+          <button class="btn btn-primary" id="btnSubmit" value="Entrar" disabled type="submit">Cadastrar</button>
         </form>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -96,6 +100,7 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </div>
 </div>
 
+<!-- LISTAGEM DE USUÁRIOS -->
 <div class="row mt-4">
   <?php foreach ($usuarios as $usuario): ?>
     <div class="col-sm-3 mb-3">
@@ -119,123 +124,8 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <?php endforeach; ?>
 </div>
 
+<!-- SCRIPT JS UNIFICADO -->
 <script src="script.js"></script>
-
-<!-- 
-<script>
-$(document).ready(function () {
-  const form = $("#form");
-  const submit = $("#btnSubmit");
-  const senha = $("#senha");
-  const senhaConfirmacao = $("#senhaConfirma");
-  const errorMessage = $("#error");
-  const errorMessageConfirm = $("#errorConfirm");
-  const errorMessageEmail = $("#errorEmail");
-
-  const frasesErro = [
-    "Preenchimento de senha é obrigatório.",
-    "A Senha precisa de no mínimo 8 caracteres.",
-    "A senha precisa de pelo menos uma letra minúscula e maiúscula.",
-    "A senha precisa conter pelo menos 1 caracter especial (!@#$_%&*).",
-    "A senha precisa conter pelo menos 1 número.",
-    "Confirmação de senha é obrigatória.",
-    "As senhas não conferem. Tente novamente.",
-    "O Email não pode estar vazio.",
-    "Insira um Email válido.",
-  ];
-
-  function checkSenha() {
-    const valorSenha = senha.val();
-    const valorSenhaConfirmacao = senhaConfirmacao.val();
-    const emailValue = $("#email").val();
-
-    const caracter = /([!@#$%&*_])/;
-    const numero = /([0-9])/;
-    const LetraContem = /([a-z].*[A-Z])|([A-Z].*[a-z])/;
-
-    let mensagemErro = "";
-    let mensagemErroEmail = "";
-    let mensagemErroConfirm = "";
-
-    if (valorSenha === "") {
-      mensagemErro = frasesErro[0];
-    } else if (valorSenha.length < 8) {
-      mensagemErro = frasesErro[1];
-    } else if (!valorSenha.match(LetraContem)) {
-      mensagemErro = frasesErro[2];
-    } else if (!valorSenha.match(numero)) {
-      mensagemErro = frasesErro[4];
-    } else if (!valorSenha.match(caracter)) {
-      mensagemErro = frasesErro[3];
-    }
-
-    if (valorSenhaConfirmacao === "") {
-      mensagemErroConfirm = frasesErro[5];
-    } else if (valorSenhaConfirmacao !== valorSenha) {
-      mensagemErroConfirm = frasesErro[6];
-    }
-
-    if (emailValue === "") {
-      mensagemErroEmail = frasesErro[7];
-    } 
-
-    errorMessage.text(mensagemErro);
-    errorMessageConfirm.text(mensagemErroConfirm);
-    errorMessageEmail.text(mensagemErroEmail);
-
-    return (
-      mensagemErro === "" &&
-      mensagemErroConfirm === "" &&
-      mensagemErroEmail === ""
-    );
-  }
-
-  function quandoInputModificado() {
-    const valido = checkSenha();
-    submit.prop("disabled", !valido);
-  }
-
-  form.on("keyup", "input", quandoInputModificado);
-
-  form.on("submit", function (event) {
-    event.preventDefault();
-
-    if (checkSenha()) {
-      let user = $("#nome").val();
-      let sobrenome = $("#sobrenome").val();
-      let senha = $("#senha").val();
-      let login = $("#login").val();
-      let email = $("#email").val();
-      let fone = $("#numero").val();
-
-        $.ajax({
-          type: "POST",
-          url: "insert.php",
-        data: {
-          nm_usuario: user,
-          nm_sobrenome: sobrenome,
-          nm_senha: senha,
-          nm_login: login,
-          nm_email: email,
-          nr_fone: fone,
-        },
-        dataType: "html",
-         success: function (response) {
-           alert("Usuário Cadastrado com sucesso!.");
-         },
-        error: function (response) {
-          alert("Erro ao cadastrar usuário. Tente novamente.");
-        },
-      });
-    }
-  });
-
-  quandoInputModificado();
-
- 
-});
-
-</script> -->
 
 </body>
 </html>

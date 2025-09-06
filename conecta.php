@@ -1,6 +1,9 @@
  <?php
     $username = 'root';
-    $password = 'root';
+    $password = '';
+    // Root - Biblioteca
+    // admin - Laboratório
+    // Vazio - Casa
 
     try {
         $conn = new PDO('mysql:host=localhost;dbname=bd_cadastro', $username, $password);
