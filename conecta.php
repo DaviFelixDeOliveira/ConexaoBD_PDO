@@ -1,6 +1,6 @@
  <?php
     $username = 'root';
-    $password = '';
+    $password = 'admin';
     // Root - Biblioteca
     // admin - Laboratório
     // Vazio - Casa
