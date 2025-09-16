@@ -1,19 +1,23 @@
-    <button onclick="window.history.back()">Voltar</button>
+<button onclick="window.history.back()">Voltar</button>
 
-    <?php
+<?php
+$nome = $_POST['nm_usuario'];
+$senha = $_POST['nm_senha'];
 
-    $nome =  $_POST['nm_usuario'];
-    $senha =  $_POST['nm_senha'];
+include 'conecta.php';
 
+$stmt = $conn->query("SELECT * FROM tb_usuario WHERE nm_usuario = '" . $nome . "' AND nm_senha = '" . $senha . "';");
+$user = $stmt->fetch();
 
-    include 'conecta.php';
-//FAZER SELEC PARA VERIFICAR SE O CADASTRO EXISTE
-    $user = $conn->query("DELETE  FROM tb_usuario  WHERE nm_usuario ='" . $nome . "' AND nm_senha = '" . $senha . "' ;")->fetch();
-    if ($user) {
-
-        echo "Usuário não encontrado!";
+if (!$user) {
+    echo "Usuário não encontrado!";
+} else {
+    // Exclui o usuário
+    $delete = $conn->query("DELETE FROM tb_usuario WHERE nm_usuario = '" . $nome . "' AND nm_senha = '" . $senha . "';");
+    if ($delete) {
+        echo "Usuário excluído com sucesso!";
     } else {
-        echo 'Usuário excluído com sucesso!';
+        echo "Erro ao excluir o usuário!";
     }
-
-    ?>
+}
+?>
